@@ -1,0 +1,28 @@
+Nama	: Dinda Wahyu Rahmadani
+NIM	: 1901012
+
+Janji:
+Saya Dinda mengerjakan TP1 dalam mata kuliah Design Pemrograman Berorientasi Objek untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah di spesifikasikan. Aamiin
+
+Untuk Login:
+Username : bebas
+Password : pbo123
+
+Kesulitan yang dihadapi:
+- Mengimplementasikan konsep OOP
+- Ada beberapa bagian yang sulit dicari referensinya di internet
+- Pemilihan warna yang sulit karena warna yang tersedia sedikit
+
+Hal baru yang dipelajari
+- Belajar menggunakan bahasa C#
+- Membuat label + button dynamic
+- Tidak boleh sembarang menghapus design pada form
+
+Fitur yang telah di buat
+1. Login
+2. Logout
+3. Membuka halaman web di browser
+4. Menampilkan semua barang
+5. Filter barang sesuai jenis dan harga
+6. Menampilkan detail barang ketika di klik
+
