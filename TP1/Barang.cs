@@ -15,7 +15,9 @@ namespace TP1
         public int harga { get; set; }
         public string foto { get; set; }
 
+        //kontruktor kosong wajib dibuat
         public Barang() { }
+
         public Barang(int id, string nama, string jenis, int harga, string foto)
         {
             this.id = id;

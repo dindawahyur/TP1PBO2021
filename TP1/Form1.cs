@@ -17,51 +17,43 @@ namespace TP1
         public Login()
         {
             InitializeComponent();
-          /*  string kUsername = "bebas";
-            string kPassword = "pbo123";*/
+            
+            //instansiasi kelas user
             this.user = new User();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //mengambil value dari text box
             this.user.username = Convert.ToString(tbUsername.Text);
             this.user.password = Convert.ToString(tbPassword.Text);
 
             if (user.Auth() == 1)
             {
+                //ketika berhasil login maka membuka form 2, dan men hide form 1
                 Form2 f2 = new Form2();
                 f2.Show();
                 this.Hide();
             }
             else
             {
+                //ketika gagal login menampilkan message box
                 string message = "Username '" + user.username + "' dan Password '" + user.password + "' tidak sesuai";
                 MessageBox.Show(message);
             }
-            /*Form2 f2 = new Form2();
-            f2.Show();
-            this.Hide();*/
         }
 
         private void dinda_Click(object sender, EventArgs e)
         {
+            //untuk mereset text
             tbUsername.ResetText();
             tbPassword.ResetText();
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //agar text box password nya memunculkan karakter *
             tbPassword.PasswordChar = '*';
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

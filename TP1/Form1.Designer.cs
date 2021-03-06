@@ -48,7 +48,6 @@ namespace TP1
             this.label1.Size = new System.Drawing.Size(126, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "L O G I N";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -71,7 +70,6 @@ namespace TP1
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // tbUsername
             // 

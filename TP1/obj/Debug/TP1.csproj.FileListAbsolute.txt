@@ -8,5 +8,4 @@ C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.csproj.CoreCompileInputs.cache
 C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.exe
 C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.pdb
 C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.Form2.resources
-C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.Detail.resources
 C:\Users\dwrah\source\repos\TP1\TP1\obj\Debug\TP1.csprojAssemblyReference.cache

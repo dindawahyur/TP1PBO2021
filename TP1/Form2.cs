@@ -13,23 +13,22 @@ namespace TP1
     public partial class Form2 : Form
     {
         List<Barang> dataBarang = new List<Barang>();
-        private int minHarga = 0;
-        private int maxHarga = 0;
-        private string jenisBarang = null;
-        public static string id_kirim;
-        private const int CS_DROPSHADOW = 0x00020000;
-
+        private int minHarga = 0;           //menyimpan harga minimal saat menfilter barang
+        private int maxHarga = 0;           //menyimpan harga maksimal saat menfilter barang
+        private string jenisBarang = null;  //menyimpan jenis barang saat menfilter barang
+        
         public Form2()
         {
             InitializeComponent();
-            setDataBarang();
-            tampilBarang();
+            setDataBarang();    //menginisialisasi barang 
+            tampilBarang();     //memanggil prosedur tampil barang
    
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            tampilFilter();
+            //saat form2 load maka menampilkan filter (combo bos jenis, harga, dan btn cari)
+            tampilFilter(); //memanggil prosedur tampil filter
         }
 
         void setDataBarang()
@@ -39,18 +38,17 @@ namespace TP1
             this.dataBarang.Add(new Barang(1, "Kulkas", "Elektronik", 950000, "refrigerator"));
             this.dataBarang.Add(new Barang(2, "Mie", "Makanan", 150000, "ramen"));
             this.dataBarang.Add(new Barang(3, "Pakaian Wanita", "Pakaian", 400000, "dress"));
-            this.dataBarang.Add(new Barang(4, "Pakaian Pria", "Pakaian", 200000, "suit"));
-            
-            
+            this.dataBarang.Add(new Barang(4, "Pakaian Pria", "Pakaian", 200000, "suit")); 
         }
-
 
         void tampilBarang()
         {
             flpDasar.Controls.Clear();//ada di desain, fungsi nya untuk membersihkan panel nya
+            
+            //foreach sebanyak banyak nya data
             foreach (var dt in this.dataBarang)
             {
-                //instansiasi class listItem (barang2 nya)
+                //kalo jenis yang di class barang itu sama dengan variabel jenisBarang yang aktif disini
                 if (dt.jenis == this.jenisBarang)
                 {
                     if (this.minHarga == 0)
@@ -75,7 +73,6 @@ namespace TP1
                     
                 }
             }
-
         }     
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -87,6 +84,7 @@ namespace TP1
 
         private void btnWebCatalog_Click(object sender, EventArgs e)
         {
+            //membuka sebuah website di browser
             System.Diagnostics.Process.Start("http://dindawr.cehiji.com/pratikum/TP5_1901012_DindaWahyuR/");
         }
 
@@ -97,9 +95,10 @@ namespace TP1
 
         private void cbHarga_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            //mengambil text dari combo box yang dipilih
             string filterHarga = (sender as ComboBox).Text;
 
+            //memberikan nilai pada variabel min dan max harga
             if (filterHarga == "100rb - 200rb")
             {
                 this.minHarga = 100000;
@@ -124,7 +123,10 @@ namespace TP1
 
         private void cbJenisBarang_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //mengambil text dari combo box jenis barang
             this.jenisBarang = (sender as ComboBox).Text;
+
+            //kalo user memilih pilihan semua, maka jenis barang di set null
             if (this.jenisBarang == "Semua")
             {
                 this.jenisBarang = null;
@@ -134,15 +136,16 @@ namespace TP1
 
         public Panel buatPanel(int id, string nama, int harga, string foto)
         {
+            //panel yang paling besar
             return createPanelBarang(id, nama, harga, foto);
         }
 
         Panel createPanelBarang(int id, string nama, int harga, string foto)
         {
+            //panel kotak setiap barang
             Panel wadah = new Panel();
             wadah.Name = nama;
             wadah.Size = new System.Drawing.Size(172, 194);
-            /* wadah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));*/
             wadah.BackColor = System.Drawing.Color.AliceBlue;
             
             wadah.Padding = new Padding(5);
@@ -162,6 +165,7 @@ namespace TP1
             return wadah;
         }
 
+        //membuat picture box
         PictureBox createPBBarang(string foto)
         {
             PictureBox pbBarang = new PictureBox();
@@ -176,6 +180,7 @@ namespace TP1
             return pbBarang;
         }
 
+        //membuat label nama
         Label createLabelNama(string nama)
         {
             Label lbNama = new Label();
@@ -189,6 +194,7 @@ namespace TP1
             return lbNama;
         }
 
+        //membuat label harga
         Label createLabelHarga(int harga)
         {
             Label lbHarga = new Label();
@@ -201,6 +207,7 @@ namespace TP1
             return lbHarga;
         }
 
+        //membuat button beli
         Button createBtnBeli(int id)
         {
             Button btnBeli = new Button();
@@ -218,6 +225,7 @@ namespace TP1
             return btnBeli;
         }
 
+        //membuat button kembali
         Button createBtnKembali()
         {
             Button btnKembali = new Button();
@@ -248,6 +256,7 @@ namespace TP1
             pFilter.Controls.Add(btn);
         }
 
+        //membuat combo box jenis
         ComboBox createCBJenis()
         {
             ComboBox cbJenisBarang = new ComboBox();
@@ -266,6 +275,7 @@ namespace TP1
             return cbJenisBarang;
         }
 
+        //membuat combo box harga
         ComboBox createCBHarga()
         {
             ComboBox cbHarga = new ComboBox();
@@ -285,6 +295,7 @@ namespace TP1
             return cbHarga;
         }
 
+        //membuat button cari
         Button createBtnCari()
         {
             Button btnCari = new Button();
@@ -304,44 +315,48 @@ namespace TP1
 
         private void btnKembali_Click(object sender, EventArgs e)
         {
-            pFilter.Controls.Clear();
+            pFilter.Controls.Clear();//clear panel pFilter
 
+            //inisialisasi nilai awal
             minHarga = 0;
             maxHarga = 0;
             jenisBarang = null;
+
+            //memanggil tampilBarang dan tampil filter
             tampilBarang();
             tampilFilter();
             
         }
 
+        //jika button beli di click
         private void btnBeli_Click(object sender, EventArgs e)
         {
           
-            string id_btn;
-            id_btn = (sender as Button).Name;
+            string id_btn; //deklarasi variabel 
+            id_btn = (sender as Button).Name; //mengambil name button
 
+            //melalukan foreach sebanyak data barang
             foreach (var dt in this.dataBarang)
             {
+                //jika id pada data barang sama dengan id btn
                 if (dt.id.ToString() == id_btn)
                 {
+                    //memberikan batas harga dan jenis untuk menfilter
                     minHarga = dt.harga;
                     maxHarga = dt.harga;
                     jenisBarang = dt.jenis;
                 }
             }
 
-            pFilter.Controls.Clear();
+            pFilter.Controls.Clear();//clear panel pFilter
 
+            //membuat button dynamic
             Button btn = createBtnKembali();
             pFilter.Controls.Add(btn);
 
+            //memanggil tampil barang
             tampilBarang();
          
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
